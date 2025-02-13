@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Safest Route Finder</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <style>
+        * {
+            font-family: "calibri";
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #673ab7;
+            padding: 15px 20px;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffc107;
+        }
+
+        .main-container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+            padding-top: 60px;
+        }
+
+        .sidebar {
+            width: 45%;
+            background: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 15px;
+        }
+
+        input {
+            padding: 12px;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        #findRoute {
+            background-color: #ff69b4;
+            color: white;
+        }
+
+        #compareRoutes {
+            background-color: #87CEFA;
+            color: white;
+            display: none;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .directions-container {
+            height: 65%;
+            overflow-y: auto;
+            background: white;
+            padding: 10px;
+            position: sticky;
+            top: 20px;
+            z-index: 10;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        #map-container {
+            flex-grow: 1;
+            position: relative;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-bar">
+            
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home_page') }}">Home</a></li>
+                <li><a href="{{ url_for('map_page') }}">Map</a></li>
+                <li><a href="{{ url_for('alert_page') }}">Alert</a></li>
+                <li><a href="{{ url_for('contact_page') }}">Contact Us</a></li>
+                <li><a href="{{ url_for('report_page') }}">Report Incident</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="main-container">
+        <div class="sidebar">
+            <h2>Find the Safest Route</h2>
+            <div id="controls">
+                <input type="text" id="from" placeholder="Enter Starting Location">
+                <input type="text" id="to" placeholder="Enter Destination">
+                <div class="button-container">
+                    <button id="findRoute">Find Pink Route</button>
+                    <button id="compareRoutes">Show Blue Route</button>
+                </div>
+            </div>
+            <div class="directions-container">
+                <h3 class="route-direction">Route Directions</h3>
+                <div id="route-ui"></div>
+            </div>
+        </div>
+        <div id="map-container">
+            <div id="map"></div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/page2.js') }}"></script>
+</body>
+</html>
