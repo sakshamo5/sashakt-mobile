@@ -1,0 +1,58 @@
+/* Complete mobile-friendly design for all frontend pages */
+
+/* Ensure responsive meta tag in HTML head:
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> */
+
+/* Global Mobile Styles */
+@media only screen and (max-width: 768px) {
+    body {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  
+    header nav ul {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    nav ul li a {
+      padding: 12px;
+      font-size: 16px;
+    }
+  
+    h1, h2, h3 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  
+    .card-container, .features, .main-container {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .card {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 15px;
+    }
+  
+    .container {
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+  
+    .sidebar, .navbar {
+      display: block;
+      width: 100%;
+    }
+  
+    #map {
+      height: 250px;
+    }
+  
+    footer {
+      padding: 15px;
+      text-align: center;
+    }
+  }
+  
